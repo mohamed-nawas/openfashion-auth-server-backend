@@ -1,0 +1,45 @@
+## servlet configuration
+server:
+  servlet:
+    context-path: /openfashion-auth-service
+  port: 8081
+
+## application configuration
+spring:
+  application:
+    name: openfashion-auth-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/openfashion_auth?createDatabaseIfNotExist=true
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    user: root
+    password: password
+    baseline-version: 0
+    baseline-description: "init db migration"
+
+    # active profile should be activated for different env
+#  profiles:
+#    active: prod
+
+
+## oauth2 security configuration
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8081/openfashion-auth-service/oauth/check_token
+    client:
+      client-id: open_fashion_mobile
+      client-secret: 3615
+
+# oauth2 resource server configuration
+oauth:
+  resource-id: ${RESOURCE_ID:auth_server}
