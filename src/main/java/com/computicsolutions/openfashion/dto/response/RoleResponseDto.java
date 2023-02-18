@@ -1,7 +1,6 @@
 package com.computicsolutions.openfashion.dto.response;
 
 import com.computicsolutions.openfashion.entity.Role;
-import com.computicsolutions.openfashion.entity.User;
 import lombok.Getter;
 
 /**

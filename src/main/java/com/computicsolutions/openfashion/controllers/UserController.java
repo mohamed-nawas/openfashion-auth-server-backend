@@ -6,7 +6,6 @@ import com.computicsolutions.openfashion.entity.Role;
 import com.computicsolutions.openfashion.entity.User;
 import com.computicsolutions.openfashion.enums.ErrorResponseStatusType;
 import com.computicsolutions.openfashion.enums.SuccessResponseStatusType;
-import com.computicsolutions.openfashion.exception.AdminAlreadyExistsException;
 import com.computicsolutions.openfashion.exception.OpenFashionAuthException;
 import com.computicsolutions.openfashion.exception.UserAlreadyExistsException;
 import com.computicsolutions.openfashion.exception.UserRoleNotFoundException;

@@ -41,17 +41,6 @@ public class User implements Serializable {
     @Column
     private Date updated;
 
-    @PrePersist
-    private void onCreate() {
-        created = new Date();
-        updated = new Date();
-    }
-
-    @PreUpdate
-    private void onUpdate() {
-        updated = new Date();
-    }
-
     public User(User user) {
         this.id = user.getId();
         this.username = user.getUsername();
@@ -68,5 +57,16 @@ public class User implements Serializable {
         this.email = dto.getEmail();
         this.password = dto.getPassword();
         this.role = dto.getRole();
+    }
+
+    @PrePersist
+    private void onCreate() {
+        created = new Date();
+        updated = new Date();
+    }
+
+    @PreUpdate
+    private void onUpdate() {
+        updated = new Date();
     }
 }

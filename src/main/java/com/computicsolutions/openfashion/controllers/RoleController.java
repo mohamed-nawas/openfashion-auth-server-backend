@@ -1,17 +1,12 @@
 package com.computicsolutions.openfashion.controllers;
 
 import com.computicsolutions.openfashion.dto.request.RoleRegistrationRequestDto;
-import com.computicsolutions.openfashion.dto.request.UserRegistrationRequestDto;
 import com.computicsolutions.openfashion.dto.response.RoleResponseDto;
-import com.computicsolutions.openfashion.dto.response.UserResponseDto;
 import com.computicsolutions.openfashion.entity.Role;
-import com.computicsolutions.openfashion.entity.User;
 import com.computicsolutions.openfashion.enums.ErrorResponseStatusType;
 import com.computicsolutions.openfashion.enums.SuccessResponseStatusType;
-import com.computicsolutions.openfashion.exception.AdminAlreadyExistsException;
 import com.computicsolutions.openfashion.exception.OpenFashionAuthException;
 import com.computicsolutions.openfashion.service.RoleService;
-import com.computicsolutions.openfashion.service.UserService;
 import com.computicsolutions.openfashion.wrapper.ResponseWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

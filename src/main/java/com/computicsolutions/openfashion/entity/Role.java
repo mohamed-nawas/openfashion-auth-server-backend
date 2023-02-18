@@ -35,6 +35,11 @@ public class Role implements Serializable {
     @Column
     private Date updated;
 
+    public Role(RoleRegistrationRequestDto dto) {
+        this.id = ROLE_ID_PREFIX + UUID.randomUUID();
+        this.name = dto.getRoleName();
+    }
+
     @PrePersist
     private void onCreate() {
         created = new Date();
@@ -44,10 +49,5 @@ public class Role implements Serializable {
     @PreUpdate
     private void onUpdate() {
         updated = new Date();
-    }
-
-    public Role(RoleRegistrationRequestDto dto) {
-        this.id = ROLE_ID_PREFIX + UUID.randomUUID();
-        this.name = dto.getRoleName();
     }
 }
