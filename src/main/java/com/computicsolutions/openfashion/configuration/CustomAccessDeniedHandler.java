@@ -28,10 +28,10 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest request, HttpServletResponse response,
                        AccessDeniedException exception) throws IOException, ServletException {
         Map map = new HashMap<>();
-        map.put(ERROR_CODE, 4099);
         map.put(STATUS, ERROR_STATUS);
         map.put(MESSAGE, exception.getMessage());
         map.put(DISPLAY_MESSAGE, ERROR_MESSAGE);
+        map.put(ERROR_CODE, 4099);
 
         response.setContentType(APPLICATION_JSON);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

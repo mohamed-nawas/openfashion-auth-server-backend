@@ -29,10 +29,10 @@ public class CustomOAuthExceptionSerializer extends StdSerializer<CustomOAuthExc
     public void serialize(CustomOAuthException exception, JsonGenerator jsonGenerator, SerializerProvider
             serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeNumberField(ERROR_CODE, 4999);
         jsonGenerator.writeStringField(STATUS, ERROR_STATUS);
         jsonGenerator.writeStringField(MESSAGE, exception.getMessage());
         jsonGenerator.writeStringField(DISPLAY_MESSAGE, ERROR_MESSAGE);
+        jsonGenerator.writeNumberField(ERROR_CODE, 4999);
         if (exception.getAdditionalInformation() != null) {
             for (Map.Entry<String, String> entry : exception.getAdditionalInformation().entrySet()) {
                 String key = entry.getKey();

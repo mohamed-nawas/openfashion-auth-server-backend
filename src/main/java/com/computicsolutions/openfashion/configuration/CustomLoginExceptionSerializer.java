@@ -29,10 +29,10 @@ public class CustomLoginExceptionSerializer extends StdSerializer<CustomLoginExc
     public void serialize(CustomLoginException exception, JsonGenerator jsonGenerator, SerializerProvider
             serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeNumberField(ERROR_CODE, ErrorResponseStatusType.INVALID_LOGIN.getCode());
         jsonGenerator.writeStringField(STATUS, ERROR_STATUS);
         jsonGenerator.writeStringField(MESSAGE, ErrorResponseStatusType.INVALID_LOGIN.getMessage());
         jsonGenerator.writeStringField(DISPLAY_MESSAGE, ERROR_MESSAGE);
+        jsonGenerator.writeNumberField(ERROR_CODE, ErrorResponseStatusType.INVALID_LOGIN.getCode());
         jsonGenerator.writeEndObject();
     }
 }

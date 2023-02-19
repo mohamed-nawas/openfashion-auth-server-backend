@@ -74,3 +74,13 @@ Ssrc/main/java/com/computicsolutions/openfashion/wrapper/SuccessResponseWrapper.
 Lsrc/main/java/com/computicsolutions/openfashion/wrapper/ResponseWrapper.java,3\b\3b0abcd915359c334f63ad04ed9a0ad691afb0e3
 Å
 Qsrc/main/java/com/computicsolutions/openfashion/wrapper/ErrorResponseWrapper.java,6\8\6808cb182ef31b06d4c846734ae0a5fe2494e07f
+Ç
+Rsrc/main/java/com/computicsolutions/openfashion/enums/ErrorResponseStatusType.java,6\8\6877fcec81857b734887cea1209b5eb05c38c67b
+á
+Wsrc/main/java/com/computicsolutions/openfashion/configuration/CustomLoginException.java,4\1\4169fafb799d1c6823524ffb5ffe5a766ad099f8
+á
+Wsrc/main/java/com/computicsolutions/openfashion/configuration/CustomOAuthException.java,4\1\41ae59ac7fb7f18365b922c10a240ac1b33187dd
+á
+Wsrc/main/java/com/computicsolutions/openfashion/configuration/ResourceServerConfig.java,7\1\7155948e0450a1be226407205f55be38dbdfb20b
+É
+Ssrc/main/java/com/computicsolutions/openfashion/configuration/AuthServerConfig.java,1\b\1bffaf3e083fc551a78715660c051e1e5c1271f6
