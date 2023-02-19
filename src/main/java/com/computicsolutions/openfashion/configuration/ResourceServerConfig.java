@@ -33,6 +33,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.resourceId(RESOURCE_ID);
+        resources.authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+        resources.accessDeniedHandler(new CustomAccessDeniedHandler());
     }
 
     /**

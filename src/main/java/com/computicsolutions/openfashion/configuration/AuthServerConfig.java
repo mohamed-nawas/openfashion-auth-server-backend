@@ -4,8 +4,11 @@ import com.computicsolutions.openfashion.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.common.exceptions.InvalidGrantException;
+import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
@@ -23,6 +26,7 @@ public class AuthServerConfig implements AuthorizationServerConfigurer {
 
     private static final String IS_AUTHENTICATED = "isAuthenticated()";
     private static final String PERMISSION_ALL = "permitAll()";
+    private static final String BAD_CREDENTIALS = "Bad credentials";
 
     private final PasswordEncoder passwordEncoder;
     private final DataSource dataSource;
@@ -71,6 +75,24 @@ public class AuthServerConfig implements AuthorizationServerConfigurer {
         endpoints.authenticationManager(authenticationManager);
         endpoints.tokenStore(tokenStore());
         endpoints.userDetailsService(userDetailService);
+
+        endpoints.exceptionTranslator(exception -> {
+            if (exception instanceof InvalidGrantException && exception.getMessage() == BAD_CREDENTIALS) {
+                OAuth2Exception oAuth2Exception = (OAuth2Exception) exception;
+                return ResponseEntity
+                        .status(oAuth2Exception.getHttpErrorCode())
+                        .body(new CustomLoginException(oAuth2Exception.getMessage()));
+            }
+
+            if (exception instanceof OAuth2Exception) {
+                OAuth2Exception oAuth2Exception = (OAuth2Exception) exception;
+                return ResponseEntity
+                        .status(oAuth2Exception.getHttpErrorCode())
+                        .body(new CustomOAuthException(oAuth2Exception.getMessage()));
+            }
+
+            throw exception;
+        });
     }
 
     /**
