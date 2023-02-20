@@ -9,7 +9,8 @@ import lombok.Getter;
 public enum SuccessResponseStatusType {
 
     CREATE_USER(2000, "Successfully created the user"),
-    CREATE_ROLE(2001, "Successfully created the role");
+    CREATE_ROLE(2001, "Successfully created the role"),
+    LOGIN_USER(2002, "Successfully logged in the user");
 
     private final int code;
     private final String message;

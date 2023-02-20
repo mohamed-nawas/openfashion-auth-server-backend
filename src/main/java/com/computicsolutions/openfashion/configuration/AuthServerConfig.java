@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
@@ -75,6 +76,7 @@ public class AuthServerConfig implements AuthorizationServerConfigurer {
         endpoints.authenticationManager(authenticationManager);
         endpoints.tokenStore(tokenStore());
         endpoints.userDetailsService(userDetailService);
+        endpoints.tokenEnhancer(tokenEnhancer());
 
         endpoints.exceptionTranslator(exception -> {
             if (exception instanceof InvalidGrantException && exception.getMessage() == BAD_CREDENTIALS) {
@@ -103,5 +105,15 @@ public class AuthServerConfig implements AuthorizationServerConfigurer {
     @Bean
     protected TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
+    }
+
+    /**
+     * This method initiates a token enhancer bean with our custom token enhancer
+     *
+     * @return TokenEnhancer
+     */
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
+        return new CustomTokenEnhancer();
     }
 }
